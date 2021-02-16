@@ -221,22 +221,40 @@
 	<h2> exercice 1</h2>
 	<p> Faire une fonction qui retourne true.</p>
 	<?php
-		function RetourneTrue($first)
-	
+		function ReturnTrue($first,$second){
+			if($first > $second){
+				return true;
+			}
+		}
+		$result = ReturnTrue(8,3);
+		echo "$result";
 	?>
 
 <!--exercice suivant-->
 	<h2> exercice 2</h2>
 	<p>Faire une fonction qui prend en paramètre une chaine de caractères et qui retourne cette même chaine</p>
 	<?php
+		function ReturnString($sentence){
+			return $sentence;
+		}
 
+		$blop = ReturnString("Salut");
+		echo "$blop";
 	?>
+
 <!--exercice suivant-->
 	<h2> exercice 3</h2>
 	<p>Faire une fonction qui prend en paramètre deux chaines de caractères et qui renvoit la concaténation de ces deux chaines.</p>
 	<?php
+		function ReturnStrings($word1, $word2){
+			$sentences = "$word1" . " $word2";
+			return $sentences;
+		}
 
+		$blop = ReturnStrings("Salut", "toi");
+		echo "$blop";
 	?>
+
 <!--exercice suivant-->
 	<h2> exercice 4</h2>
 	<p>Faire une fonction qui prend en paramètre deux nombres. La fonction doit retourner :<br/>
@@ -245,19 +263,50 @@
 		=> Les deux nombres sont identiques si les deux nombres sont égaux
 	</p>
 	<?php
+		function ReturnNumbers($number1, $number2){
 
+			if ($number1 > $number2) {
+				$result = "Le premier nombre est plus grand : $number1 > $number2.";
+				return $result;
+			} elseif($number1 < $number2) {
+				$result = "Le premier nombre est plus petit : $number1 <  $number2.";
+				return $result;
+ 			} elseif($number1 == $number2) {
+ 				$result = "Les deux nombres sont identiques : $number1 == $number2.";
+ 				return $result;
+ 			} else {
+ 				$result = "Mais que fais tu ?";
+ 				return $result;
+ 			}
+
+		}
+ 			$blop = ReturnNumbers(2, 2);
+			echo "$blop";
 	?>
+
 <!--exercice suivant-->
 	<h2> exercice 5</h2>
 	<p>Faire une fonction qui prend en paramètre un nombre et une chaine de caractères et qui renvoit a concaténation de ces deux paramètres.</p>
 	<?php
+		function ReturnBoth($number, $word){
+			$sentences = "$number" . " $word";
+			return $sentences;
+		}
 
+		$blop = ReturnStrings("17", "ans");
+		echo "$blop";
 	?>
 <!--exercice suivant-->
 	<h2> exercice 6</h2>
 	<p>Faire une fonction qui prend trois paramètres : nom, prenom et age. Elle doit renvoyer une chaine de la forme : "Bonjour" + nom + prenom + ", tu as " + age + "ans".</p>
 	<?php
+		function ReturnPerson($nom, $prenom, $age){
+			$sentences = "Bonjour $nom $prenom, tu as $age ans.";
+			return $sentences;
+		}
 
+		$blop = ReturnPerson("Fabre", "Anissa", 20);
+		echo "$blop";
 	?>
 <!--exercice suivant-->
 	<h2> exercice 7</h2>
@@ -270,74 +319,147 @@
 		=> Vous êtes une femme et vous êtes mineur
 	</p>
 	<?php
+		function ReturnType($age, $genre){
 
+			if ($age > 18 && $genre == "homme") {
+
+				$result = "Vous êtes un homme et vous êtes majeur.";
+				return $result;
+
+			} elseif($age < 18 && $genre == "homme") {
+
+				$result = "Vous êtes un homme et vous êtes mineur.";
+				return $result;
+
+ 			} elseif($age > 18 && $genre == "femme") {
+
+ 				$result = "Vous êtes une femme et vous êtes majeur.";
+ 				return $result;
+
+ 			} elseif($age < 18 && $genre == "femme") {
+
+ 				$result = "Vous êtes une femme et vous êtes mineur.";
+ 				return $result;
+
+ 			} else {
+ 				$result = "Mais que fais tu ?";
+ 				return $result;
+ 			}
+
+		}
+		$blop = ReturnType(20, "femme");
+		echo "$blop";
 	?>
 <!--exercice suivant-->
 	<h2> exercice 8</h2>
 	<p>Faire une fonction qui prend en paramètre trois nombres et qui renvoit la somme de ces nombres. Tous les paramètres doivent avoir une valeur par défaut.</p>
 	<?php
 
+		$number1 = 10;
+		$number2 = 5;
+		$number3 = 20;	
+		function ReturnSum($number1, $number2, $number3){
+
+			$result = $number1+$number2+$number3;
+ 			return $result;
+
+		}
+ 			$blop = ReturnSum(3, 3, 3);
+			echo "$blop";
 	?>
+
 <!--LES TABLEAUX-->
 
 	<h1> Les Tableaux</h1>
 	<h2> exercice 1</h2>
-	<p> Faire une fonction qui retourne true.</p>
+	<p>Créer un tableau $mois et l'initialiser avec le nom des douze mois de l'année.</p>
 	<?php
-
+		$mois = array (
+			'JANVIER',
+			'FÉVRIER',
+			'MARS',
+			'AVRIL',
+			'MAI',
+			'JUIN',
+			'JUILLET',
+			'AOUT',
+			'SEPTEMBRE',
+			'OCTOBRE',
+			'NOVEMBRE',
+			'DECEMBRE');
+		var_dump($mois);
 	?>
 <!--exercice suivant-->
 	<h2> exercice 2</h2>
-	<p>Faire une fonction qui prend en paramètre une chaine de caractères et qui retourne cette même chaine</p>
+	<p>Avec le tableau de l'exercice 1, afficher la valeur de la troisième ligne de ce tableau.</p>
 	<?php
-
+		echo $mois[2];
 	?>
 <!--exercice suivant-->
 	<h2> exercice 3</h2>
-	<p>Faire une fonction qui prend en paramètre deux chaines de caractères et qui renvoit la concaténation de ces deux chaines.</p>
+	<p>Avec le tableau de l'exercice 1 , afficher la valeur de l'index 5.</p>
 	<?php
-
+		echo $mois[5];
 	?>
 <!--exercice suivant-->
 	<h2> exercice 4</h2>
-	<p>Faire une fonction qui prend en paramètre deux nombres. La fonction doit retourner :<br/>
-		=> Le premier nombre est plus grand si le premier nombre est plus grand que le deuxième<br/>
-		=> Le premier nombre est plus petit si le premier nombre est plus petit que le deuxième<br/>
-		=> Les deux nombres sont identiques si les deux nombres sont égaux
-	</p>
+	<p>Avec le tableau de l'exercice 1, modifier le mois de aout pour lui ajouter l'accent manquant.</p>
 	<?php
-
+		$replace = substr_replace('AOUT','AOÛT', $mois[8]);
+		echo "$replace";
 	?>
 <!--exercice suivant-->
 	<h2> exercice 5</h2>
-	<p>Faire une fonction qui prend en paramètre un nombre et une chaine de caractères et qui renvoit a concaténation de ces deux paramètres.</p>
+	<p>Créer un tableau associatif avec comme index le numéro des départements des Hauts de France et en valeur leur nom.</p>
 	<?php
-
+				$departement = array (
+				    '02' => 'Aisne',
+				    '59' => 'Nord',
+				    '60' => 'Oise',
+				    '62' => 'Pas-de-Calais',
+				    '80' => 'Somme');
+				var_dump($departement);
 	?>
 <!--exercice suivant-->
 	<h2> exercice 6</h2>
-	<p>Faire une fonction qui prend trois paramètres : nom, prenom et age. Elle doit renvoyer une chaine de la forme : "Bonjour" + nom + prenom + ", tu as " + age + "ans".</p>
+	<p>Avec le tableau de l'exercice 5, afficher la valeur de l'index 59.</p>
 	<?php
-
+		echo $departement['59'];
 	?>
 <!--exercice suivant-->
 	<h2> exercice 7</h2>
-	<p>Faire une fonction qui prend deux paramètres : age et genre.<br/>
-		Le paramètre genre peut prendre comme valeur Homme ou Femme.<br/>
-		La fonction doit renvoyer en fonction des paramètres (gérer tous les cas) :<br/>
-		=> Vous êtes un homme et vous êtes majeur<br/>
-		=> Vous êtes un homme et vous êtes mineur<br/>
-		=> Vous êtes une femme et vous êtes majeur<br/>
-		=> Vous êtes une femme et vous êtes mineur
-	</p>
+	<p>Avec le tableau de l'exercice 5, ajouter la ligne correspondant au département de la ville de Reims.</p>
 	<?php
-
+		$departement['51'] = 'Marne';
 	?>
 <!--exercice suivant-->
 	<h2> exercice 8</h2>
-	<p>Faire une fonction qui prend en paramètre trois nombres et qui renvoit la somme de ces nombres. Tous les paramètres doivent avoir une valeur par défaut.</p>
+	<p>Avec le tableau de l'exercice 1 et une boucle, afficher toutes les valeurs de ce tableau.</p>
 	<?php
-
+		foreach($mois as $element)
+		{
+		    echo $element . '<br />'; // affichera $prenoms[0], $prenoms[1] etc.
+		}
+	?>
+<!--exercice suivant-->
+	<h2> exercice 9</h2>
+	<p>Avec le tableau de l'exercice 5, afficher toutes les valeurs de ce tableau.</p>
+	<?php
+		foreach($departement as $element)
+		{
+		    echo $element . '<br />'; // affichera $prenoms[0], $prenoms[1] etc.
+		}
+	?>
+<!--exercice suivant-->
+	<h2> exercice 10</h2>
+	<p>Avec le tableau de l'exercice 5, afficher toutes les valeurs de ce tableau ainsi que les clés associés.<br/>
+	Cela pourra être, par exemple, de la forme :<br/>
+	"Le département" + nom_departement + "a le numéro" + num_departement</p>
+	<?php
+		foreach($departement as $cle => $element)
+		{
+		    echo "Le département $element a le numero $cle <br/>"; // affichera $prenoms[0], $prenoms[1] etc.
+		}
 	?>
 </body>
 
